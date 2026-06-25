@@ -4,7 +4,7 @@ import 'app_colors.dart';
 
 var appTheme = ThemeData(
   useMaterial3: false,
-  scaffoldBackgroundColor: AppColors.secondaryColor,
+  scaffoldBackgroundColor: AppColors.white,
   appBarTheme: const AppBarTheme(
     backgroundColor: AppColors.primaryColor,
     centerTitle: false,
