@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$KcalMainState {
 
- int get totalKcal;
+ int get totalKcal; List<FoodItem> get foodList;
 /// Create a copy of KcalMainState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $KcalMainStateCopyWith<KcalMainState> get copyWith => _$KcalMainStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is KcalMainState&&(identical(other.totalKcal, totalKcal) || other.totalKcal == totalKcal));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is KcalMainState&&(identical(other.totalKcal, totalKcal) || other.totalKcal == totalKcal)&&const DeepCollectionEquality().equals(other.foodList, foodList));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,totalKcal);
+int get hashCode => Object.hash(runtimeType,totalKcal,const DeepCollectionEquality().hash(foodList));
 
 @override
 String toString() {
-  return 'KcalMainState(totalKcal: $totalKcal)';
+  return 'KcalMainState(totalKcal: $totalKcal, foodList: $foodList)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $KcalMainStateCopyWith<$Res>  {
   factory $KcalMainStateCopyWith(KcalMainState value, $Res Function(KcalMainState) _then) = _$KcalMainStateCopyWithImpl;
 @useResult
 $Res call({
- int totalKcal
+ int totalKcal, List<FoodItem> foodList
 });
 
 
@@ -62,10 +62,11 @@ class _$KcalMainStateCopyWithImpl<$Res>
 
 /// Create a copy of KcalMainState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? totalKcal = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? totalKcal = null,Object? foodList = null,}) {
   return _then(_self.copyWith(
 totalKcal: null == totalKcal ? _self.totalKcal : totalKcal // ignore: cast_nullable_to_non_nullable
-as int,
+as int,foodList: null == foodList ? _self.foodList : foodList // ignore: cast_nullable_to_non_nullable
+as List<FoodItem>,
   ));
 }
 
@@ -150,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int totalKcal)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int totalKcal,  List<FoodItem> foodList)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case Init() when $default != null:
-return $default(_that.totalKcal);case _:
+return $default(_that.totalKcal,_that.foodList);case _:
   return orElse();
 
 }
@@ -171,10 +172,10 @@ return $default(_that.totalKcal);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int totalKcal)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int totalKcal,  List<FoodItem> foodList)  $default,) {final _that = this;
 switch (_that) {
 case Init():
-return $default(_that.totalKcal);case _:
+return $default(_that.totalKcal,_that.foodList);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +192,10 @@ return $default(_that.totalKcal);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int totalKcal)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int totalKcal,  List<FoodItem> foodList)?  $default,) {final _that = this;
 switch (_that) {
 case Init() when $default != null:
-return $default(_that.totalKcal);case _:
+return $default(_that.totalKcal,_that.foodList);case _:
   return null;
 
 }
@@ -206,10 +207,17 @@ return $default(_that.totalKcal);case _:
 
 
 class Init implements KcalMainState {
-   Init({required this.totalKcal});
+   Init({required this.totalKcal, required final  List<FoodItem> foodList}): _foodList = foodList;
   
 
 @override final  int totalKcal;
+ final  List<FoodItem> _foodList;
+@override List<FoodItem> get foodList {
+  if (_foodList is EqualUnmodifiableListView) return _foodList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_foodList);
+}
+
 
 /// Create a copy of KcalMainState
 /// with the given fields replaced by the non-null parameter values.
@@ -221,16 +229,16 @@ $InitCopyWith<Init> get copyWith => _$InitCopyWithImpl<Init>(this, _$identity);
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Init&&(identical(other.totalKcal, totalKcal) || other.totalKcal == totalKcal));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Init&&(identical(other.totalKcal, totalKcal) || other.totalKcal == totalKcal)&&const DeepCollectionEquality().equals(other._foodList, _foodList));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,totalKcal);
+int get hashCode => Object.hash(runtimeType,totalKcal,const DeepCollectionEquality().hash(_foodList));
 
 @override
 String toString() {
-  return 'KcalMainState(totalKcal: $totalKcal)';
+  return 'KcalMainState(totalKcal: $totalKcal, foodList: $foodList)';
 }
 
 
@@ -241,7 +249,7 @@ abstract mixin class $InitCopyWith<$Res> implements $KcalMainStateCopyWith<$Res>
   factory $InitCopyWith(Init value, $Res Function(Init) _then) = _$InitCopyWithImpl;
 @override @useResult
 $Res call({
- int totalKcal
+ int totalKcal, List<FoodItem> foodList
 });
 
 
@@ -258,10 +266,11 @@ class _$InitCopyWithImpl<$Res>
 
 /// Create a copy of KcalMainState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? totalKcal = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? totalKcal = null,Object? foodList = null,}) {
   return _then(Init(
 totalKcal: null == totalKcal ? _self.totalKcal : totalKcal // ignore: cast_nullable_to_non_nullable
-as int,
+as int,foodList: null == foodList ? _self._foodList : foodList // ignore: cast_nullable_to_non_nullable
+as List<FoodItem>,
   ));
 }
 
